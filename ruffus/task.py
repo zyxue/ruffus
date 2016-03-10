@@ -4643,6 +4643,9 @@ def pipeline_printout_graph(stream,
     if output_format is None:
         output_format = os.path.splitext(stream.name)[1].lstrip(".")
 
+    target_tasks = [
+        _ for _ in target_tasks if _.func_name != 'job_wrapper_mkdir'] 
+
     try:
         graph_printout(stream,
                        output_format,
